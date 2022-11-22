@@ -1,1 +1,1 @@
-python -m manage runserver 0.0.0.0:8000
+gunicorn -b 0.0.0.0:8000 system_design_project.asgi:application -w 2 -k uvicorn.workers.UvicornWorker --log-file -

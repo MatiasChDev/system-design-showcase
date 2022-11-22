@@ -5,9 +5,9 @@ import environ
 from todoist_api_python.api_async import TodoistAPIAsync
 
 from .asgi import application
+from django.conf import settings
 
 env = environ.Env()
-environ.Env.read_env()
 
 CLIENT_SESSSION = None
 TODOIST_API = None
