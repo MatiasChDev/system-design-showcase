@@ -2,5 +2,7 @@ version: "3.7"
 services:
   webserver:
     build: .
+    environment:
+      - DJANGO_SETTINGS_MODULE
     ports:
       - ${PORT}:8000
