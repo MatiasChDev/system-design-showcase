@@ -8,6 +8,7 @@ from django.shortcuts import render
 from django.views import View
 from loguru import logger
 from todoist_api_python.api_async import TodoistAPIAsync
+from django.conf import settings
 
 from system_design_project.client_session import get_todoist_api
 
@@ -16,7 +17,7 @@ from system_design_project.client_session import get_todoist_api
 
 class TasksView(View):
     async def get(self, request):
-        api = await get_todoist_api()
+        api = await get_todoist_api(settings.TODOIST_API_TOKEN)
         try:
             tasks = await api.get_tasks()
             formatted_tasks = [

@@ -5,9 +5,6 @@ import environ
 from todoist_api_python.api_async import TodoistAPIAsync
 
 from .asgi import application
-from django.conf import settings
-
-env = environ.Env()
 
 CLIENT_SESSSION = None
 TODOIST_API = None
@@ -26,11 +23,11 @@ async def get_client_session():
     return CLIENT_SESSSION
 
 
-async def get_todoist_api():
+async def get_todoist_api(todoist_token: str):
     global TODOIST_API
 
     async with _lock:
         if not TODOIST_API:
-            TODOIST_API = TodoistAPIAsync(env('TODOIST_API_TOKEN'))
+            TODOIST_API = TodoistAPIAsync(todoist_token)
 
     return TODOIST_API
