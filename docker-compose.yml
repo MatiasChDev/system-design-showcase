@@ -2,7 +2,7 @@ version: "3.7"
 services:
   webserver:
     image: krippyk/webserver:latest
-    environment:
-      - DJANGO_SETTINGS_MODULE
+    env_file:
+      - .env
     ports:
       - 8000:8000
